@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'ZTuple.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Sometimes you may need to return multiple values other than just one. In these cases, you can use a pointer, like `NSError **`, or you can put them into an array or a dictionary, or straightforward, create a class for it. But you have another choice now, ZTuple, it can group multiple values in a better way. 
                        DESC
 
   s.homepage         = 'https://github.com/WilliamZang/ZTuple'
