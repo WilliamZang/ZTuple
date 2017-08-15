@@ -12,14 +12,14 @@
 
 #define Z_SETTER_FUNC_DEF(index, _)                                                                             \
 static void metamacro_concat(setter, index)(metamacro_concat(ZTuple, metamacro_inc(index)) *tuple, id value) {  \
-    tuple. Z_ORDIAL_AT(index) = value;                                                                          \
+    tuple. Z_ORDINAL_AT(index) = value;                                                                          \
 }
 
 metamacro_for_cxt(20, Z_SETTER_FUNC_DEF, , _)
 
 #define Z_GETTER_FUNC_DEF(index, _)                                                                             \
 static id metamacro_concat(getter, index)(metamacro_concat(ZTuple, metamacro_inc(index)) *tuple) {              \
-    return [tuple Z_ORDIAL_AT(index)];                                                                          \
+    return [tuple Z_ORDINAL_AT(index)];                                                                          \
 }
 
 metamacro_for_cxt(20, Z_GETTER_FUNC_DEF, , _)

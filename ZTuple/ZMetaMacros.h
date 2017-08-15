@@ -9,12 +9,12 @@
 #import <libextobjc/metamacros.h>
 #import <ZTuple/ZTupleBase.h>
 
-#define Z_ORDIAL_NUMBERS                                    first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth
-#define Z_ORDIAL_CAP_NUMBERS                                First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth, Ninth, Tenth, Eleventh, Twelfth, Thirteenth, Fourteenth, Fifteenth, Sixteenth, Seventeenth, Eighteenth, Nineteenth, Twentieth
+#define Z_ORDINAL_NUMBERS                                    first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth, thirteenth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth
+#define Z_ORDINAL_CAP_NUMBERS                                First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth, Ninth, Tenth, Eleventh, Twelfth, Thirteenth, Fourteenth, Fifteenth, Sixteenth, Seventeenth, Eighteenth, Nineteenth, Twentieth
 #define Z_CHARS                                             A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
                                                             
-#define Z_ORDIAL_AT(i)                                      metamacro_at(i, Z_ORDIAL_NUMBERS)
-#define Z_ORDIAL_CAP_AT(i)                                  metamacro_at(i, Z_ORDIAL_CAP_NUMBERS)
+#define Z_ORDINAL_AT(i)                                      metamacro_at(i, Z_ORDINAL_NUMBERS)
+#define Z_ORDINAL_CAP_AT(i)                                  metamacro_at(i, Z_ORDINAL_CAP_NUMBERS)
 #define Z_CHARS_AT(i)                                       metamacro_at(i, Z_CHARS)
                                                             
 #define metamacro_for_comma(COUNT, MACRO, CONTEXT)          metamacro_concat(metamacro_for_comma, COUNT)(MACRO, CONTEXT)
@@ -66,9 +66,9 @@
 #define metamacro_for_recursive20(MACRO, SEP, CONTEXT)      metamacro_for_recursive19(MACRO, SEP, CONTEXT) SEP MACRO(19, CONTEXT)
 
 #define Z_GENERIC_TYPE(index, _)                            __covariant Z_CHARS_AT(index): id
-#define Z_PROPERTY_DEF(index, _)                            @property (nonatomic, strong) Z_CHARS_AT(index) Z_ORDIAL_AT(index)
-#define _Z_INIT_PARAM_FIRST(index)                          Z_ORDIAL_CAP_AT(index):(Z_CHARS_AT(index))Z_ORDIAL_AT(index)
-#define _Z_INIT_PARAM(index)                                Z_ORDIAL_AT(index):(Z_CHARS_AT(index))Z_ORDIAL_AT(index)
+#define Z_PROPERTY_DEF(index, _)                            @property (nonatomic, strong) Z_CHARS_AT(index) Z_ORDINAL_AT(index)
+#define _Z_INIT_PARAM_FIRST(index)                          Z_ORDINAL_CAP_AT(index):(Z_CHARS_AT(index))Z_ORDINAL_AT(index)
+#define _Z_INIT_PARAM(index)                                Z_ORDINAL_AT(index):(Z_CHARS_AT(index))Z_ORDINAL_AT(index)
 #define Z_INIT_PARAM(index, _)                              metamacro_if_eq(0, index)(_Z_INIT_PARAM_FIRST(index))(_Z_INIT_PARAM(index))
 
 #define Z_TUPLE_DEF(i)                                                                                                           \
@@ -86,8 +86,8 @@ metamacro_for_recursive(i, Z_PROPERTY_DEF, ;, _);                               
 
 metamacro_for_cxt(20, Z_TUPLE_DEF_FOREACH, ;, _)
 
-#define _Z_INIT_PARAM_CALL_FIRST(index, param)              Z_ORDIAL_CAP_AT(index):param
-#define _Z_INIT_PARAM_CALL(index, param)                    Z_ORDIAL_AT(index):param
+#define _Z_INIT_PARAM_CALL_FIRST(index, param)              Z_ORDINAL_CAP_AT(index):param
+#define _Z_INIT_PARAM_CALL(index, param)                    Z_ORDINAL_AT(index):param
 #define Z_INIT_PARAM_CALL(index, param)                     metamacro_if_eq(0, index)(_Z_INIT_PARAM_CALL_FIRST(index, param))(_Z_INIT_PARAM_CALL(index, param))
 
 #define ZTuple(...)                                         [[metamacro_concat(ZTuple, metamacro_argcount(__VA_ARGS__)) alloc] metamacro_concat(initWith, metamacro_foreach(Z_INIT_PARAM_CALL, ,__VA_ARGS__))]
@@ -97,7 +97,7 @@ metamacro_for_cxt(20, Z_TUPLE_DEF_FOREACH, ;, _)
 #define metamacro_init(...)                                 metamacro_take(metamacro_dec(metamacro_argcount(__VA_ARGS__)), __VA_ARGS__)
 #define metamacro_last(...)                                 metamacro_drop(metamacro_dec(metamacro_argcount(__VA_ARGS__)), __VA_ARGS__)
 
-#define Z_UNPACK(index, value, param)                       param = [value Z_ORDIAL_AT(index)]
+#define Z_UNPACK(index, value, param)                       param = [value Z_ORDINAL_AT(index)]
 
 #define ZTupleUnpack(...)                                   metamacro_foreach_cxt(Z_UNPACK, ;, metamacro_last(__VA_ARGS__), metamacro_init(__VA_ARGS__))
 

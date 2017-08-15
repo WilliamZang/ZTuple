@@ -15,7 +15,7 @@ void enumerationMutationHandler(id object) {
 SpecBegin(ZTupleTests)
 
 describe(@"tuple tests", ^{
-    context(@"ordial property", ^{
+    context(@"ordinal property", ^{
         it(@"can access tuple using properties", ^{
             ZTuple3<NSNumber *, NSString *, NSDictionary *> *tuple = [[ZTuple3 alloc] initWithFirst:@3 second:@"string" third:@{@"key": @"value"}];
             
@@ -76,7 +76,7 @@ describe(@"tuple tests", ^{
             [tuple removeObserver:observer forKeyPath:@"second"];
         });
         
-        it(@"can observe property named last, will invoke observe callback when set the last ordial oproperty", ^{
+        it(@"can observe property named last, will invoke observe callback when set the last ordinal oproperty", ^{
             ZTuple3 *tuple = ZTuple(@1, @2, @3);
             
             id observer1 = [OCMockObject mockForClass:NSObject.class];
