@@ -75,21 +75,17 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
 
 - (NSUInteger)countByEnumeratingWithState:(nonnull NSFastEnumerationState *)state objects:(id  _Nullable __unsafe_unretained * _Nonnull)buffer count:(NSUInteger)len {
     NSUInteger count = tupleCountWithObject(self);
-    unsigned long countOfItemsAlreadyEnumerated = state->state;
-    
-    state->itemsPtr = buffer;
-    state->mutationsPtr = (typeof(state->mutationsPtr))&self->_hashValue;
-    
-    if (countOfItemsAlreadyEnumerated < count) {
-        NSUInteger i;
-        for (i = 0; i < MIN(len, count - countOfItemsAlreadyEnumerated); ++i) {
-            buffer[i] = self[countOfItemsAlreadyEnumerated + i];
-        }
-        state->state = countOfItemsAlreadyEnumerated + i;
-        return i;
-    } else {
+    if (state->state == count) {
         return 0;
     }
+    
+    Ivar ivar = class_getInstanceVariable(self.class, "_first");
+    
+    state->itemsPtr = (id  _Nullable __unsafe_unretained * _Nonnull)((__bridge void *)self + ivar_getOffset(ivar));
+    state->mutationsPtr = (typeof(state->mutationsPtr))&self->_hashValue;
+    
+    state->state = count;
+    return count;
 }
 
 @end
