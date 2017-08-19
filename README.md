@@ -16,16 +16,21 @@ Sometimes you may need to return multiple values other than just one. In these c
 You can use the macro `ZTuple` to create a tuple, and it supports generics. Like this:
 
 ```objective-c
-ZTuple2<NSNumber *, NSString *> *tuple = ZTuple(@1, @"string");
+ZTuple3<NSNumber *, NSString *, NSDictionary> *tuple = ZTuple(@1, @"string", nil);
 ```
+
+`ZTuple3` means there are 3 items in this tuple. So `ZTuple6` is 6 item. There are 20 classes from `ZTuple1` to `ZTuple20` support you to use.
+
+The maximum capacity of ZTuple is 20. It is big enough in most cases. If you really need something larger than that, an array or a dictionary might be a better choice at the moment.
+
 
 You have serval ways to get and set values: 
 
 ```objective-c
-ZTuple2<NSNumber *, NSString *> *tuple = ZTuple(@1, @"string");
+ZTuple3<NSNumber *, NSString *, NSDictionary> *tuple = ZTuple(@1, @"string", nil);
 // use the unpack macro
-ZTupleUnpack(NSNumber *a, NSString *b, Z_FromVar(tuple));
-NSLog(@"first:%@, second:%@", a, b);
+ZTupleUnpack(NSNumber *a, NSString *b, NSDictionary *c, Z_FromVar(tuple));
+NSLog(@"first:%@, second:%@, last:%@", a, b, c);
 // use ordinal numbers like first, second
 tuple.first;
 tuple.first = @5;
@@ -36,10 +41,13 @@ tuple.last = @"last";
 tuple[0];
 tuple[0] = @"s";
 // iteration
+BOOL hasNil = NO;
 for (id value in tuple) {
     NSLog(@"%@", value);
+    if (value == nil) hasNil = YES;
     tuple.first = @3 // will throw an exception!
 }
+// hasNil -> YES
 ```
 
 The `last`of the tuple is an alias of the "last element", in the sample code above, it is equivalent to `second`.
@@ -48,7 +56,6 @@ All the elements inside the tuple are Key-Value Observable. If you observe `seco
 
 ZTuple supports `NSCopying` protocol. You can easily copy them if you need.
 
-The maximum capacity of ZTuple is 20. It is big enough in most cases. If you really need something larger than that, an array or a dictionary might be a better choice at the moment.
 
 
 ## Advantages
