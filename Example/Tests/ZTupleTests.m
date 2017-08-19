@@ -176,11 +176,27 @@ describe(@"tuple tests", ^{
             
             NSMutableArray *array = [NSMutableArray array];
             
-            for(NSNumber *number in tuple) {
+            for (NSNumber *number in tuple) {
                 [array addObject:number];
             }
             expect(array).to.equal(@[@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,
                                      @11, @12, @13, @14, @15, @16, @17, @18, @19, @20]);
+        });
+        
+        it(@"can access nil item use for-in", ^{
+            ZTuple4 *tuple = ZTuple(@1, @2, @3, nil);
+            
+            NSMutableArray *array = [NSMutableArray array];
+            BOOL hasNil = NO;
+            for (NSNumber *number in tuple) {
+                if (number == nil) {
+                    hasNil = YES;
+                } else {
+                    [array addObject:number];
+                }
+            }
+            expect(hasNil).to.beTruthy();
+            expect(array).to.equal(@[@1, @2, @3]);
         });
         
         it(@"will raise error if modify any item when enumeration", ^{
