@@ -13,5 +13,6 @@
 
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
 - (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
+- (__kindof ZTupleBase *)join:(ZTupleBase *)other;
 
 @end

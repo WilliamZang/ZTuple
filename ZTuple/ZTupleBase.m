@@ -107,4 +107,22 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
     return YES;
 }
 
+- (__kindof ZTupleBase *)join:(ZTupleBase *)other { 
+    NSUInteger selfCount = tupleCountWithObject(self);
+    NSUInteger otherTupleCount = tupleCountWithObject(other);
+    NSAssert(selfCount + otherTupleCount <= 20, @"two tuple items count added cannot larger than 20");
+    if (selfCount + otherTupleCount > 20) {
+        return nil;
+    }
+    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", selfCount + otherTupleCount]);
+    ZTupleBase *newInstance = [class new];
+    for (int i = 0; i < selfCount; ++i) {
+        newInstance[i] = self[i];
+    }
+    for (int i = 0; i < otherTupleCount; ++i) {
+        newInstance[selfCount + i] = other[i];
+    }
+    return newInstance;
+}
+
 @end

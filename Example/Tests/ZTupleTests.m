@@ -234,6 +234,39 @@ describe(@"tuple tests", ^{
         });
     });
     
+    context(@"join", ^{
+        it(@"can join two tuples use method join:", ^{
+            ZTuple2 *tuple1 = ZTuple(@1, @2);
+            ZTuple3 *tuple2 = ZTuple(@3, @4, @5);
+            
+            expect([tuple1 join:tuple2]).to.equal(ZTuple(@1, @2, @3, @4, @5));
+        });
+        
+        it(@"should raise an assert if two tuples itme count larger than 20", ^{
+            ZTuple11 *tuple1 = ZTuple(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11);
+            ZTuple11 *tuple2 = ZTuple(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11);
+            id assertHandler = [OCMockObject mockForClass:NSAssertionHandler.class];
+            
+            [[[assertHandler expect] ignoringNonObjectArgs] handleFailureInMethod:@selector(join:) object:tuple1 file:OCMOCK_ANY lineNumber:0 description:@"two tuple items count added cannot larger than 20"];
+            
+            [[[NSThread currentThread] threadDictionary] setValue:assertHandler
+                                                           forKey:NSAssertionHandlerKey];
+            
+            ZTupleBase *tuple3 = [tuple1 join:tuple2];
+            expect(tuple3).to.beNil();
+            [assertHandler verify];
+            
+            [[[NSThread currentThread] threadDictionary] removeObjectForKey:NSAssertionHandlerKey];
+        });
+        
+        it(@"can use extend macro add some new item to exist tuple", ^{
+            ZTuple3 *tuple = ZTuple(@1, @2, @3);
+            ZTuple5 *tuple5 = ZTupleExtend(tuple, @4, @5);
+            
+            expect(tuple5).to.equal(ZTuple(@1, @2, @3, @4, @5));
+        });
+    });
+    
 });
 
 SpecEnd
