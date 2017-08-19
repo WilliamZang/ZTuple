@@ -88,4 +88,23 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
     return count;
 }
 
+- (BOOL)isEqual:(ZTupleBase *)other {
+    if (![other isKindOfClass:ZTupleBase.class]) {
+        return NO;
+    }
+    if (self == other) {
+        return YES;
+    }
+    if (self.class != other.class) {
+        return NO;
+    }
+    for (int i = 0; i < tupleCountWithObject(self); ++i) {
+        if (self[i] == other[i] || [self[i] isEqual:other[i]]) {
+            continue;
+        }
+        return NO;
+    }
+    return YES;
+}
+
 @end
