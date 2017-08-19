@@ -40,9 +40,9 @@ GetterType getterTable[] = {
     metamacro_for_comma(20, Z_GETTER_TABLE_ITEM, _)
 };
 
-static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
-    unsigned long count = 0;
-    sscanf(class_getName(object_getClass(obj)), "ZTuple%lud", &count);
+static unsigned short tupleCountWithObject(ZTupleBase *obj) {
+    unsigned short count = 0;
+    sscanf(class_getName(object_getClass(obj)), "ZTuple%hu", &count);
     return count;
 }
 
@@ -114,7 +114,7 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
     if (selfCount + otherTupleCount > 20) {
         return nil;
     }
-    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", selfCount + otherTupleCount]);
+    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%@", @(selfCount + otherTupleCount)]);
     ZTupleBase *newInstance = [class new];
     for (int i = 0; i < selfCount; ++i) {
         newInstance[i] = self[i];
@@ -134,7 +134,7 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
         return [self copy];
     }
     
-    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", count]);
+    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%@", @(count)]);
     ZTupleBase *newInstance = [class new];
     for (int i = 0; i < count; ++i) {
         newInstance[i] = self[i];
@@ -152,7 +152,7 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
         return [self copy];
     }
     
-    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", selfCount - count]);
+    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%@", @(selfCount - count)]);
     ZTupleBase *newInstance = [class new];
     for (int i = 0; i + count < selfCount; ++i) {
         newInstance[i] = self[i + count];
