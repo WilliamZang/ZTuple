@@ -267,6 +267,67 @@ describe(@"tuple tests", ^{
         });
     });
     
+    context(@"take & drop", ^{
+        it(@"can take first N item from tuple", ^{
+            ZTuple4 *tuple = ZTuple(@1, @2, @3, @4);
+            ZTuple2 *tuple2 = [tuple take:2];
+            
+            expect(tuple2).to.equal(ZTuple(@1, @2));
+        });
+        
+        it(@"should get a clone if taken N is larger than tuple's count", ^{
+            ZTuple4 *tuple = ZTuple(@1, @2, @3, @4);
+            ZTuple4 *tuple2 = [tuple take:15];
+            
+            expect(tuple2).to.equal(tuple);
+        });
+        
+        it(@"should raise an assert if N is 0", ^{
+            ZTuple11 *tuple = ZTuple(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11);
+            id assertHandler = [OCMockObject mockForClass:NSAssertionHandler.class];
+            
+            [[[assertHandler expect] ignoringNonObjectArgs] handleFailureInMethod:@selector(join:) object:tuple file:OCMOCK_ANY lineNumber:0 description:@"Invalid parameter not satisfying: %@", @"count >= 1 && count <= tupleCountWithObject(self)"];
+            
+            [[[NSThread currentThread] threadDictionary] setValue:assertHandler
+                                                           forKey:NSAssertionHandlerKey];
+            
+            ZTupleBase *tuple2 = [tuple take:0];
+            expect(tuple2).to.beNil();
+            [assertHandler verify];
+            
+            [[[NSThread currentThread] threadDictionary] removeObjectForKey:NSAssertionHandlerKey];
+        });
+        
+        it(@"can drop first N itme from tuple", ^{
+            ZTuple4 *tuple = ZTuple(@1, @2, @3, @4);
+            ZTuple2 *tuple2 = [tuple drop:2];
+            
+            expect(tuple2).to.equal(ZTuple(@3, @4));
+        });
+        
+        it(@"should raise an assert if N is larger or equal than tuple's count", ^{
+            ZTuple11 *tuple = ZTuple(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11);
+            id assertHandler = [OCMockObject mockForClass:NSAssertionHandler.class];
+            
+            [[[assertHandler expect] ignoringNonObjectArgs] handleFailureInMethod:@selector(join:) object:tuple file:OCMOCK_ANY lineNumber:0 description:@"Invalid parameter not satisfying: %@", @"count < selfCount"];
+            
+            [[[NSThread currentThread] threadDictionary] setValue:assertHandler
+                                                           forKey:NSAssertionHandlerKey];
+            
+            ZTupleBase *tuple2 = [tuple drop:11];
+            expect(tuple2).to.beNil();
+            [assertHandler verify];
+            
+            [[[NSThread currentThread] threadDictionary] removeObjectForKey:NSAssertionHandlerKey];
+        });
+        
+        it(@"should get a clone if drop N is zero", ^{
+            ZTuple4 *tuple = ZTuple(@1, @2, @3, @4);
+            ZTuple4 *tuple2 = [tuple drop:0];
+            
+            expect(tuple2).to.equal(tuple);
+        });
+    });
 });
 
 SpecEnd

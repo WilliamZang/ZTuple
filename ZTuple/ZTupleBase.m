@@ -125,4 +125,39 @@ static NSUInteger tupleCountWithObject(ZTupleBase *obj) {
     return newInstance;
 }
 
+- (__kindof ZTupleBase *)take:(NSUInteger)count {
+    NSParameterAssert(count >= 1);
+    if (count < 1) {
+        return nil;
+    }
+    if (count >= tupleCountWithObject(self)) {
+        return [self copy];
+    }
+    
+    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", count]);
+    ZTupleBase *newInstance = [class new];
+    for (int i = 0; i < count; ++i) {
+        newInstance[i] = self[i];
+    }
+    return newInstance;
+}
+
+- (__kindof ZTupleBase *)drop:(NSUInteger)count {
+    NSUInteger selfCount = tupleCountWithObject(self);
+    NSParameterAssert(count < selfCount);
+    if (count >= selfCount) {
+        return nil;
+    }
+    if (count == 0) {
+        return [self copy];
+    }
+    
+    Class class = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", selfCount - count]);
+    ZTupleBase *newInstance = [class new];
+    for (int i = 0; i + count < selfCount; ++i) {
+        newInstance[i] = self[i + count];
+    }
+    return newInstance;;
+}
+
 @end
