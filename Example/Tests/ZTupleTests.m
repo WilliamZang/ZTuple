@@ -183,6 +183,20 @@ describe(@"tuple tests", ^{
                                      @11, @12, @13, @14, @15, @16, @17, @18, @19, @20]);
         });
         
+        it(@"can use for(;;) to access tuple", ^{
+            ZTuple20 *tuple = ZTuple(@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,
+                                     @11, @12, @13, @14, @15, @16, @17, @18, @19, @20);
+            
+            NSMutableArray *array = [NSMutableArray array];
+            
+            for (int i = 0; i < tuple.count; i++) {
+                [array addObject:tuple[i]];
+            }
+            
+            expect(array).to.equal(@[@1, @2, @3, @4, @5, @6, @7, @8, @9, @10,
+                                     @11, @12, @13, @14, @15, @16, @17, @18, @19, @20]);
+        });
+        
         it(@"can access nil item use for-in", ^{
             ZTuple4 *tuple = ZTuple(@1, @2, @3, nil);
             
