@@ -52,6 +52,10 @@ static unsigned short tupleCountWithObject(ZTupleBase *obj) {
     return self.hashValue;
 }
 
+- (NSUInteger)count {
+    return tupleCountWithObject(self);
+}
+
 - (id)objectAtIndexedSubscript:(NSUInteger)idx {
     NSParameterAssert(idx < tupleCountWithObject(self));
     if (idx < tupleCountWithObject(self)) {

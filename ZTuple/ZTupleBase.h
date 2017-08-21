@@ -10,6 +10,7 @@
 @interface ZTupleBase : NSObject <NSCopying, NSFastEnumeration>
 
 @property (nonatomic, assign) NSUInteger hashValue;
+@property (nonatomic, assign, readonly) NSUInteger count;
 
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
 - (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
