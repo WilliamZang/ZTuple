@@ -14,4 +14,5 @@ FOUNDATION_EXPORT double ZTupleVersionNumber;
 FOUNDATION_EXPORT const unsigned char ZTupleVersionString[];
 
 #import <ZTuple/ZTupleBase.h>
+#import <ZTuple/ZTupleSubClasses.h>
 #import <ZTuple/ZMetaMacros.h>

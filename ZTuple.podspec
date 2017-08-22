@@ -22,6 +22,4 @@ Sometimes you may need to return multiple values other than just one. In these c
   s.module_map = 'ZTuple/ZTuple.modulemap'
   
   s.frameworks = 'Foundation'
-  
-  s.dependency 'libextobjc', '~> 0.4.1'
 end

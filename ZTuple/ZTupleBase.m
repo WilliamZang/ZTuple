@@ -6,38 +6,39 @@
 //
 
 #import "ZTupleBase.h"
+#import "ZTupleSubClasses.h"
 #import "ZMetaMacros.h"
 #include "string.h"
 @import ObjectiveC.runtime;
 
-#define Z_SETTER_FUNC_DEF(index, _)                                                                             \
-static void metamacro_concat(setter, index)(metamacro_concat(ZTuple, metamacro_inc(index)) *tuple, id value) {  \
-    tuple. Z_ORDINAL_AT(index) = value;                                                                          \
+#define Z_SETTER_FUNC_DEF(index)                                                                                               \
+static void Z_CONCAT(setter, index)(Z_CONCAT(ZTuple, Z_INC(index)) *tuple, id value) {                                         \
+    tuple. Z_ORDINAL_AT(index) = value;                                                                                        \
 }
 
-metamacro_for_cxt(20, Z_SETTER_FUNC_DEF, , _)
+Z_FOR_SPACE(20, Z_SETTER_FUNC_DEF)
 
-#define Z_GETTER_FUNC_DEF(index, _)                                                                             \
-static id metamacro_concat(getter, index)(metamacro_concat(ZTuple, metamacro_inc(index)) *tuple) {              \
-    return [tuple Z_ORDINAL_AT(index)];                                                                          \
+#define Z_GETTER_FUNC_DEF(index)                                                                                               \
+static id Z_CONCAT(getter, index)(Z_CONCAT(ZTuple, Z_INC(index)) *tuple) {                                                     \
+    return [tuple Z_ORDINAL_AT(index)];                                                                                        \
 }
 
-metamacro_for_cxt(20, Z_GETTER_FUNC_DEF, , _)
+Z_FOR_SPACE(20, Z_GETTER_FUNC_DEF)
 
 typedef void (*SetterType)(ZTupleBase *tuple, id value);
 
-#define Z_SETTER_TABLE_ITEM(index, context)     &metamacro_concat(setter, index)
+#define Z_SETTER_TABLE_ITEM(index)     & Z_CONCAT(setter, index)
 
 SetterType setterTable[] = {
-    metamacro_for_comma(20, Z_SETTER_TABLE_ITEM, _)
+    Z_FOR_COMMA(20, Z_SETTER_TABLE_ITEM)
 };
 
 typedef id (*GetterType)(ZTupleBase *tuple);
 
-#define Z_GETTER_TABLE_ITEM(index, context)     &metamacro_concat(getter, index)
+#define Z_GETTER_TABLE_ITEM(index)     & Z_CONCAT(getter, index)
 
 GetterType getterTable[] = {
-    metamacro_for_comma(20, Z_GETTER_TABLE_ITEM, _)
+    Z_FOR_COMMA(20, Z_GETTER_TABLE_ITEM)
 };
 
 static unsigned short tupleCountWithObject(ZTupleBase *obj) {

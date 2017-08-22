@@ -45,7 +45,7 @@ describe(@"tuple tests", ^{
             ZTuple4<NSNumber *, NSNumber *, NSNumber *, NSNumber *> *tuple = ZTuple(@1, @2, @3, @4);
             
             ZTupleUnpack(NSNumber *a, NSNumber *b, NSNumber *c, NSNumber *d, Z_FromVar(tuple));
-            
+
             expect(a).to.equal(@1);
             expect(b).to.equal(@2);
             expect(c).to.equal(@3);
