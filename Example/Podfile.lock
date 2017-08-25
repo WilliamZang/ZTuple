@@ -37,7 +37,7 @@ PODS:
   - libextobjc/UmbrellaHeader (0.4.1)
   - OCMock (3.4)
   - Specta (1.0.6)
-  - ZTuple (1.0.0):
+  - ZTuple (1.0.1.alpha):
     - libextobjc (~> 0.4.1)
 
 DEPENDENCIES:
@@ -55,7 +55,7 @@ SPEC CHECKSUMS:
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
   Specta: f506f3a8361de16bc0dcf3b17b75e269072ba465
-  ZTuple: 8960c7f699505dc26b1b5169f072c9577fbaf3ef
+  ZTuple: bcc258141029ffbd759116517c65a72b8ea4c289
 
 PODFILE CHECKSUM: b7e6f61d8fa03492380586d2c59b0c4a52eeedfc
 

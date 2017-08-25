@@ -27,6 +27,7 @@
 		2249BD2D1F3714B900E918A0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2249BD2F1F372E1C00E918A0 /* MacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacTests-Info.plist"; sourceTree = "<group>"; };
 		2249BD301F372E1C00E918A0 /* iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSTests-Info.plist"; sourceTree = "<group>"; };
+		229641851F5004B000D23822 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		27834AB9881D13B2AB1568E4 /* Pods-ZTuple_iOS_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTuple_iOS_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTuple_iOS_Tests/Pods-ZTuple_iOS_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		53DF17CF33F8F4F42FBEEF38 /* Pods-ZTuple_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZTuple_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZTuple_Tests/Pods-ZTuple_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -132,6 +133,7 @@
 			children = (
 				9C0758345232D66776293D7B /* ZTuple.podspec */,
 				0C9A399F4BF5DA6BB9917B68 /* README.md */,
+				229641851F5004B000D23822 /* CHANGELOG.md */,
 				B7CF5155190F40A85A0F7468 /* LICENSE */,
 			);
 			name = "Podspec Metadata";

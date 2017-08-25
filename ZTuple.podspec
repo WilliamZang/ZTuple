@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ZTuple'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1.alpha'
   s.summary          = 'ZTuple.'
 
   s.description      = <<-DESC
