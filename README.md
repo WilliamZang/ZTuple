@@ -56,7 +56,16 @@ All the elements inside the tuple are Key-Value Observable. If you observe `seco
 
 ZTuple supports `NSCopying` protocol. You can easily copy them if you need.
 
+## Features
 
+* ZTuple macro create a tuple quickly
+* ordinal number properties
+* subscripts accessing
+* for-in accessing
+* NSScopy protocol supporting
+* drop some item or take some item
+* join two tuples
+* convert a tuple to an array or convert an array to a tuple
 
 ## Advantages
 Compare to NSArray / NSDictionary, ZTuple has the following advantages:

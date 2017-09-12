@@ -1,20 +1,32 @@
-==== 1.0.1.alpha
+# Changelog
+All notable changes to this project will be documented in this file.
 
-## Feature
+## [1.1.0] - 2017-09-12
 
-* add -(NSUInteger)count method
-* take some items and drop some items to get a new tuple
+### Added
 
-## Fixed
+- you can get count using '- (NSUInteger)count'
+- take some items and drop some items to get a new tuple
+- extend item
+- join two tuples
+- convert a tuple to an array or convert an array to a tuple
+- support tvOS and watchOS
 
-* - (BOOL)isEqual is support now
+### Removed
 
-==== 1.0.0
+- no more dependent 'libextobjc'
 
-## Feature
+### Fixed
 
-* ZTuple macro to get a tuple
-* using ordinal number properties to access item
-* using subscripts to access items
-* using for-in to access itmes
-* support NSCopy protocol
+- isEqual is correct now
+- some typing error
+
+## [1.0.0] - 2017-08-18
+
+## Added
+
+- ZTuple macro to get a tuple
+- using ordinal number properties to access item
+- using subscripts to access items
+- using for-in to access itmes
+- support NSCopy protocol
