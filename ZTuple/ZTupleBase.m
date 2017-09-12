@@ -50,7 +50,12 @@ static unsigned short tupleCountWithObject(ZTupleBase *obj) {
 @implementation ZTupleBase
 
 + (instancetype)tupleWithArray:(NSArray *)array {
-    return nil;
+    Class tupleClass = NSClassFromString([NSString stringWithFormat:@"ZTuple%lu", (unsigned long)array.count]);
+    ZTupleBase *tuple = [tupleClass new];
+    for (int i = 0; i < array.count; ++i) {
+        tuple[i] = [array[i] isEqual:NSNull.null] ? nil : array[i];
+    }
+    return tuple;
 }
 
 - (NSUInteger)hash {
@@ -170,7 +175,11 @@ static unsigned short tupleCountWithObject(ZTupleBase *obj) {
 }
 
 - (NSArray *)allObjects {
-    return nil;
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSObject *item in self) {
+        [array addObject:item ?: NSNull.null];
+    }
+    return [array copy];
 }
 
 @end
