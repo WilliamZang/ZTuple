@@ -368,6 +368,14 @@ describe(@"tuple tests", ^{
             expect(tuple).to.equal(ZTuple(@1, nil, @3));
         });
     });
+    
+    context(@"others", ^{
+        it(@"will show description like NSArray", ^{
+            ZTuple2 *tuple = ZTuple(@1, @2);
+            
+            expect(tuple.description).to.match(@"<ZTuple2: 0x[0-9a-f]>(\n    1,\n    2\n)");
+        });
+    });
 });
 
 SpecEnd
