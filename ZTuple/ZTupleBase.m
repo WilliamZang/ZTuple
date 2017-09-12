@@ -49,6 +49,10 @@ static unsigned short tupleCountWithObject(ZTupleBase *obj) {
 
 @implementation ZTupleBase
 
++ (instancetype)tupleWithArray:(NSArray *)array {
+    return nil;
+}
+
 - (NSUInteger)hash {
     return self.hashValue;
 }
@@ -163,6 +167,10 @@ static unsigned short tupleCountWithObject(ZTupleBase *obj) {
         newInstance[i] = self[i + count];
     }
     return newInstance;;
+}
+
+- (NSArray *)allObjects {
+    return nil;
 }
 
 @end

@@ -342,6 +342,32 @@ describe(@"tuple tests", ^{
             expect(tuple2).to.equal(tuple);
         });
     });
+    
+    context(@"tuple and array convert", ^{
+        it(@"can convert a tuple to an array", ^{
+            ZTuple3 *tuple = ZTuple(@1, @2, @3);
+            
+            expect([tuple allObjects]).to.equal(@[@1, @2, @3]);
+        });
+        
+        it(@"should use NSNull instead nil when convert to an array", ^{
+            ZTuple3 *tuple = ZTuple(@1, nil, @3);
+            
+            expect([tuple allObjects]).to.equal(@[@1, NSNull.null, @3]);
+        });
+        
+        it(@"can convert an array to a tuple", ^{
+            ZTupleBase *tuple = [ZTupleBase tupleWithArray:@[@1, @2, @3]];
+            
+            expect(tuple).to.equal(ZTuple(@1, @2, @3));
+        });
+        
+        it(@"should use nil instead NSNull when convert to a tuple", ^{
+            ZTupleBase *tuple = [ZTupleBase tupleWithArray:@[@1, NSNull.null, @3]];
+            
+            expect(tuple).to.equal(ZTuple(@1, nil, @3));
+        });
+    });
 });
 
 SpecEnd
