@@ -14,6 +14,8 @@ Sometimes you may need to return multiple values other than just one. In these c
 
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.8'
+  s.watchos.deployment_target = '2.0'
+  s.tvos.deployment_target = '9.0'
 
   s.source_files = 'ZTuple/**/*.{m,h}'
 
