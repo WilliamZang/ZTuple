@@ -373,7 +373,13 @@ describe(@"tuple tests", ^{
         it(@"will show description like NSArray", ^{
             ZTuple2 *tuple = ZTuple(@1, @2);
             
-            expect(tuple.description).to.match(@"<ZTuple2: 0x[0-9a-f]>(\n    1,\n    2\n)");
+            expect(tuple.description).to.equal([NSString stringWithFormat:@"<ZTuple2: 0x%lx>(\n    1,\n    2\n)", (unsigned long)tuple]);
+        });
+        
+        it(@"will show nil as null", ^{
+            ZTuple3 *tuple = ZTuple(@1, nil, @3);
+            
+            expect(tuple.description).to.equal([NSString stringWithFormat:@"<ZTuple3: 0x%lx>(\n    1,\n    \"<null>\",\n    3\n)", (unsigned long)tuple]);
         });
     });
 });

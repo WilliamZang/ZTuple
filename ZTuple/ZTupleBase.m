@@ -182,4 +182,8 @@ static unsigned short tupleCountWithObject(ZTupleBase *obj) {
     return [array copy];
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@%@", [super description], [self allObjects]];
+}
+
 @end
