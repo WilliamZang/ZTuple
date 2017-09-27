@@ -13,6 +13,7 @@
 @property (nonatomic, assign, readonly) NSUInteger count;
 
 + (instancetype)tupleWithArray:(NSArray *)array;
++ (__kindof ZTupleBase *)tupleWithCount:(NSUInteger)count;
 
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
 - (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;

@@ -381,6 +381,12 @@ describe(@"tuple tests", ^{
             
             expect(tuple.description).to.equal([NSString stringWithFormat:@"<ZTuple3: 0x%lx>(\n    1,\n    \"<null>\",\n    3\n)", (unsigned long)tuple]);
         });
+        
+        it(@"will create a new tuple with count arg", ^{
+            ZTuple3 *tuple = [ZTupleBase tupleWithCount:3];
+            
+            expect(tuple).to.beKindOf([ZTuple3 class]);
+        });
     });
 });
 
