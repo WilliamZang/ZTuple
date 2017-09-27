@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2017-09-27
+
+### Added
+
+- you can create a new tuple with +[ZTupleBase tupleWithCount:]
+
+### Removed
+
+- remove _Pods.xcodeproj soft link file for some project which doesn't suppot it
+
 ## [1.1.0] - 2017-09-12
 
 ### Added
