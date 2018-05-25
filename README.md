@@ -1,3 +1,5 @@
+# The library is deprecated. Please move to [https://github.com/EasyReactFramework/EasyTuple](https://github.com/EasyReactFramework/EasyTuple)
+
 # ZTuple
 
 [![CI Status](http://img.shields.io/travis/WilliamZang/ZTuple.svg?style=flat)](https://travis-ci.org/WilliamZang/ZTuple)
