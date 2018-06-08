@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.2.1] - 2018-06-08
+
+### Changed
+
+- README
+- the library is deprecated in favor of [EasyTuple](https://github.com/EasyReactFramework/EasyTuple)
+
 ## [1.2.0] - 2017-09-27
 
 ### Added
