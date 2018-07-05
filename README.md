@@ -1,4 +1,4 @@
-# The library is deprecated. Please move to [https://github.com/EasyReactFramework/EasyTuple](https://github.com/EasyReactFramework/EasyTuple)
+# The library is deprecated. Please move to https://github.com/meituan/EasyTuple
 
 # ZTuple
 
